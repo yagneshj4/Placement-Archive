@@ -1,0 +1,603 @@
+{
+  "companies": [
+    { "name": "Google", "website": "https://careers.google.com", "description": "Global tech giant known for search, cloud, and AI" },
+    { "name": "Microsoft", "website": "https://careers.microsoft.com", "description": "Software and cloud computing leader" },
+    { "name": "Amazon", "website": "https://amazon.jobs", "description": "E-commerce and cloud computing giant" },
+    { "name": "Meta", "website": "https://metacareers.com", "description": "Social media and metaverse company" },
+    { "name": "Apple", "website": "https://apple.com/careers", "description": "Consumer electronics and software company" },
+    { "name": "Netflix", "website": "https://jobs.netflix.com", "description": "Streaming entertainment service" },
+    { "name": "Uber", "website": "https://uber.com/careers", "description": "Ride-sharing and delivery platform" },
+    { "name": "Flipkart", "website": "https://flipkartcareers.com", "description": "Indian e-commerce marketplace" },
+    { "name": "Adobe", "website": "https://adobe.com/careers", "description": "Creative software and digital media company" },
+    { "name": "Goldman Sachs", "website": "https://goldmansachs.com/careers", "description": "Investment banking and financial services" }
+  ],
+  "users": [
+    {
+      "email": "senior1@demo.com",
+      "password": "Demo@123",
+      "name": "Priya Sharma",
+      "role": "senior",
+      "college": "IIT Delhi",
+      "graduationYear": 2024,
+      "branch": "Computer Science"
+    },
+    {
+      "email": "senior2@demo.com",
+      "password": "Demo@123",
+      "name": "Rahul Verma",
+      "role": "senior",
+      "college": "IIT Bombay",
+      "graduationYear": 2024,
+      "branch": "Information Technology"
+    },
+    {
+      "email": "junior1@demo.com",
+      "password": "Demo@123",
+      "name": "Anjali Patel",
+      "role": "junior",
+      "college": "NIT Trichy",
+      "graduationYear": 2025,
+      "branch": "Computer Science"
+    },
+    {
+      "email": "admin@demo.com",
+      "password": "Admin@123",
+      "name": "Admin User",
+      "role": "admin",
+      "college": "IIIT Hyderabad",
+      "graduationYear": 2023,
+      "branch": "Computer Science"
+    }
+  ],
+  "experiences": [
+    {
+      "companyName": "Google",
+      "role": "Software Engineer L3",
+      "interviewYear": 2024,
+      "difficultyLevel": 4,
+      "offerStatus": "selected",
+      "overallExp": "positive",
+      "isAnonymous": false,
+      "tips": "1. Focus heavily on Data Structures and Algorithms - practice LeetCode medium to hard problems daily.\n2. System Design is crucial - study Designing Data-Intensive Applications book.\n3. Behavioral questions follow the STAR format - prepare 5-6 strong stories.\n4. Mock interviews helped me a lot - do at least 10 before the actual interview.\n5. Google cares about clean, readable code - practice writing code without an IDE.",
+      "resourcesUsed": ["LeetCode", "System Design Primer", "Cracking the Coding Interview", "Pramp"],
+      "rounds": [
+        {
+          "roundNumber": 1,
+          "roundType": "online_assessment",
+          "roundName": "Online Coding Assessment",
+          "description": "2 coding problems in 90 minutes. First was a medium-level array problem, second was a graph-based hard problem. Used Google's custom coding environment.",
+          "durationMinutes": 90,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Given an array of integers and a target sum, find all unique pairs that sum to the target. Handle duplicates efficiently.",
+              "questionType": "coding",
+              "topic": "Arrays",
+              "subtopic": "Two Pointers",
+              "difficulty": 3,
+              "answerApproach": "Sort the array first, then use two pointers from both ends. Skip duplicates while iterating. Time: O(n log n), Space: O(1)"
+            },
+            {
+              "questionText": "Design a function to find the shortest path in a weighted graph where you can remove at most k edges to make them cost 0.",
+              "questionType": "coding",
+              "topic": "Graphs",
+              "subtopic": "Dijkstra Modified",
+              "difficulty": 5,
+              "answerApproach": "Modified Dijkstra with state (node, edges_removed). Use priority queue with tuples (cost, node, k_remaining). Track visited states."
+            }
+          ]
+        },
+        {
+          "roundNumber": 2,
+          "roundType": "technical",
+          "roundName": "Phone Screen",
+          "description": "45-minute technical interview via Google Meet. Started with introductions, then dove into a coding problem. Interviewer was friendly and gave hints when stuck.",
+          "durationMinutes": 45,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Implement an LRU Cache with O(1) get and put operations.",
+              "questionType": "coding",
+              "topic": "Data Structures",
+              "subtopic": "HashMap + Doubly Linked List",
+              "difficulty": 4,
+              "answerApproach": "Combine HashMap for O(1) lookup with Doubly Linked List for O(1) removal and insertion. HashMap stores key -> node reference."
+            },
+            {
+              "questionText": "How would you extend the LRU Cache to handle cache invalidation based on TTL?",
+              "questionType": "system_design",
+              "topic": "System Design",
+              "subtopic": "Caching",
+              "difficulty": 3
+            }
+          ]
+        },
+        {
+          "roundNumber": 3,
+          "roundType": "technical",
+          "roundName": "Onsite Round 1 - Coding",
+          "description": "First onsite round focused on algorithmic problem solving. Had to write production-quality code.",
+          "durationMinutes": 45,
+          "mode": "offline",
+          "questions": [
+            {
+              "questionText": "Given a stream of integers, find the median at any point efficiently.",
+              "questionType": "coding",
+              "topic": "Heaps",
+              "subtopic": "Two Heaps",
+              "difficulty": 4,
+              "answerApproach": "Maintain two heaps - max heap for lower half, min heap for upper half. Balance sizes. Median is from top of one or average of both."
+            }
+          ]
+        },
+        {
+          "roundNumber": 4,
+          "roundType": "technical",
+          "roundName": "Onsite Round 2 - System Design",
+          "description": "45-minute system design round. Was asked to design a URL shortener like bit.ly. Had to cover all aspects from high-level architecture to database schema.",
+          "durationMinutes": 45,
+          "mode": "offline",
+          "questions": [
+            {
+              "questionText": "Design a URL shortener service like bit.ly that can handle millions of URLs.",
+              "questionType": "system_design",
+              "topic": "System Design",
+              "subtopic": "Web Services",
+              "difficulty": 4,
+              "answerApproach": "Key components: Base62 encoding, hash collision handling, read-heavy so use caching (Redis), NoSQL for scale, CDN for redirects. Consider analytics, rate limiting, custom aliases."
+            }
+          ]
+        },
+        {
+          "roundNumber": 5,
+          "roundType": "behavioral",
+          "roundName": "Googleyness & Leadership",
+          "description": "Behavioral round focusing on Google's culture fit. Questions about teamwork, handling ambiguity, and past projects.",
+          "durationMinutes": 45,
+          "mode": "offline",
+          "questions": [
+            {
+              "questionText": "Tell me about a time when you had to deal with ambiguity in a project.",
+              "questionType": "behavioral",
+              "topic": "Behavioral",
+              "subtopic": "Ambiguity",
+              "difficulty": 3
+            },
+            {
+              "questionText": "Describe a situation where you had a conflict with a team member and how you resolved it.",
+              "questionType": "behavioral",
+              "topic": "Behavioral",
+              "subtopic": "Conflict Resolution",
+              "difficulty": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "Microsoft",
+      "role": "Software Development Engineer",
+      "interviewYear": 2024,
+      "difficultyLevel": 3,
+      "offerStatus": "selected",
+      "overallExp": "positive",
+      "isAnonymous": false,
+      "tips": "1. Microsoft values problem-solving approach over just getting the right answer.\n2. They ask follow-up questions, so be prepared to optimize your initial solution.\n3. System design round tests practical knowledge - they prefer Azure examples.\n4. Strong focus on OOP principles - brush up on SOLID principles.\n5. Be ready to discuss your projects in depth - they dig into technical decisions.",
+      "resourcesUsed": ["LeetCode", "GeeksforGeeks", "InterviewBit", "YouTube - System Design videos"],
+      "rounds": [
+        {
+          "roundNumber": 1,
+          "roundType": "online_assessment",
+          "roundName": "Online Coding Test",
+          "description": "3 coding problems in 75 minutes on Codility. Mix of easy, medium, and hard problems.",
+          "durationMinutes": 75,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Reverse words in a string while preserving whitespace positions.",
+              "questionType": "coding",
+              "topic": "Strings",
+              "subtopic": "String Manipulation",
+              "difficulty": 2
+            },
+            {
+              "questionText": "Find the longest substring without repeating characters.",
+              "questionType": "coding",
+              "topic": "Strings",
+              "subtopic": "Sliding Window",
+              "difficulty": 3,
+              "answerApproach": "Use sliding window with HashSet to track characters. Expand right, shrink left when duplicate found. Track maximum length."
+            },
+            {
+              "questionText": "Serialize and deserialize a binary tree.",
+              "questionType": "coding",
+              "topic": "Trees",
+              "subtopic": "Tree Traversal",
+              "difficulty": 4,
+              "answerApproach": "Use preorder traversal with null markers. For deserialization, use queue or recursive approach with index tracking."
+            }
+          ]
+        },
+        {
+          "roundNumber": 2,
+          "roundType": "technical",
+          "roundName": "Technical Interview 1",
+          "description": "Coding round with focus on problem-solving. Interviewer was very helpful and collaborative.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design and implement a thread-safe bounded blocking queue.",
+              "questionType": "coding",
+              "topic": "Concurrency",
+              "subtopic": "Multi-threading",
+              "difficulty": 4,
+              "answerApproach": "Use mutex locks and condition variables. Implement enqueue that blocks when full and dequeue that blocks when empty."
+            }
+          ]
+        },
+        {
+          "roundNumber": 3,
+          "roundType": "technical",
+          "roundName": "Design Round",
+          "description": "System design focusing on scalability and Azure services.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design a notification system that can send push notifications, emails, and SMS to millions of users.",
+              "questionType": "system_design",
+              "topic": "System Design",
+              "subtopic": "Distributed Systems",
+              "difficulty": 4,
+              "answerApproach": "Use message queues for decoupling, different workers for each notification type. Priority queues for urgent notifications. Rate limiting per user. Consider Azure Service Bus, Event Grid."
+            }
+          ]
+        },
+        {
+          "roundNumber": 4,
+          "roundType": "hr",
+          "roundName": "HR Round",
+          "description": "Discussion about career goals, Microsoft culture, and compensation.",
+          "durationMinutes": 30,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Why do you want to join Microsoft?",
+              "questionType": "hr",
+              "topic": "Behavioral",
+              "difficulty": 2
+            },
+            {
+              "questionText": "Where do you see yourself in 5 years?",
+              "questionType": "hr",
+              "topic": "Behavioral",
+              "difficulty": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "Amazon",
+      "role": "SDE-1",
+      "interviewYear": 2024,
+      "difficultyLevel": 4,
+      "offerStatus": "rejected",
+      "overallExp": "neutral",
+      "isAnonymous": false,
+      "tips": "1. Amazon's Leadership Principles are EXTREMELY important - prepare 2-3 stories for each principle.\n2. Every behavioral question should be answered using the STAR format.\n3. Coding rounds are timed strictly - practice speed coding.\n4. Bar raiser round is tough - they specifically try to find weaknesses.\n5. System design expectations are high even for SDE-1.",
+      "resourcesUsed": ["LeetCode", "Amazon Leadership Principles Guide", "Glassdoor", "Blind"],
+      "rounds": [
+        {
+          "roundNumber": 1,
+          "roundType": "online_assessment",
+          "roundName": "OA",
+          "description": "2 coding problems + work simulation test. Coding was on Amazon's platform.",
+          "durationMinutes": 120,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Find k closest points to origin from a list of points.",
+              "questionType": "coding",
+              "topic": "Heaps",
+              "subtopic": "Priority Queue",
+              "difficulty": 3,
+              "answerApproach": "Use max heap of size k. For each point, calculate distance and maintain heap size. Can also use quickselect for average O(n)."
+            },
+            {
+              "questionText": "Merge k sorted linked lists into one sorted list.",
+              "questionType": "coding",
+              "topic": "Linked Lists",
+              "subtopic": "Heap/Divide and Conquer",
+              "difficulty": 4,
+              "answerApproach": "Use min heap to always get the smallest head. Alternative: divide and conquer, merge pairs recursively."
+            }
+          ]
+        },
+        {
+          "roundNumber": 2,
+          "roundType": "technical",
+          "roundName": "Loop Round 1 - DSA",
+          "description": "Pure coding round with LP questions woven in.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design a data structure that supports insert, delete, and getRandom in O(1).",
+              "questionType": "coding",
+              "topic": "Data Structures",
+              "subtopic": "HashMap + Array",
+              "difficulty": 4,
+              "answerApproach": "Use HashMap for O(1) lookup and ArrayList for O(1) random access. For delete, swap with last element."
+            },
+            {
+              "questionText": "Tell me about a time when you had to deliver results under a tight deadline.",
+              "questionType": "behavioral",
+              "topic": "Leadership Principles",
+              "subtopic": "Deliver Results",
+              "difficulty": 3
+            }
+          ]
+        },
+        {
+          "roundNumber": 3,
+          "roundType": "technical",
+          "roundName": "Loop Round 2 - System Design",
+          "description": "System design with heavy focus on scalability and AWS services.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design Amazon's order processing system.",
+              "questionType": "system_design",
+              "topic": "System Design",
+              "subtopic": "E-commerce",
+              "difficulty": 5,
+              "answerApproach": "Event-driven architecture with SQS/SNS. Saga pattern for distributed transactions. DynamoDB for orders. Consider inventory management, payment processing, notification service."
+            }
+          ]
+        },
+        {
+          "roundNumber": 4,
+          "roundType": "behavioral",
+          "roundName": "Bar Raiser",
+          "description": "Deep dive into leadership principles and past experiences. This round was challenging.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Tell me about a time when you disagreed with your manager and how you handled it.",
+              "questionType": "behavioral",
+              "topic": "Leadership Principles",
+              "subtopic": "Have Backbone; Disagree and Commit",
+              "difficulty": 4
+            },
+            {
+              "questionText": "Describe a situation where you had to make a decision with incomplete information.",
+              "questionType": "behavioral",
+              "topic": "Leadership Principles",
+              "subtopic": "Bias for Action",
+              "difficulty": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "Flipkart",
+      "role": "SDE-1",
+      "interviewYear": 2024,
+      "difficultyLevel": 3,
+      "offerStatus": "selected",
+      "overallExp": "positive",
+      "isAnonymous": false,
+      "tips": "1. Flipkart focuses a lot on problem-solving and coding skills.\n2. Machine coding round is unique - practice LLD problems.\n3. They ask about Java/Spring Boot internals if you mention them.\n4. System design questions are often e-commerce related.\n5. HR round is straightforward but be prepared for salary negotiation.",
+      "resourcesUsed": ["LeetCode", "InterviewBit", "Refactoring Guru", "Head First Design Patterns"],
+      "rounds": [
+        {
+          "roundNumber": 1,
+          "roundType": "online_assessment",
+          "roundName": "Online Test",
+          "description": "3 coding problems focusing on DSA. Medium to hard difficulty.",
+          "durationMinutes": 90,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Find all anagram substrings in a string.",
+              "questionType": "coding",
+              "topic": "Strings",
+              "subtopic": "Sliding Window + Hashing",
+              "difficulty": 3
+            },
+            {
+              "questionText": "Minimum cost to connect all cities using roads (MST problem).",
+              "questionType": "coding",
+              "topic": "Graphs",
+              "subtopic": "Minimum Spanning Tree",
+              "difficulty": 3
+            }
+          ]
+        },
+        {
+          "roundNumber": 2,
+          "roundType": "technical",
+          "roundName": "Machine Coding Round",
+          "description": "1.5 hour round to design and implement a parking lot system. Focus was on clean code and design patterns.",
+          "durationMinutes": 90,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design and implement a parking lot system with multiple floors, different vehicle types, and pricing.",
+              "questionType": "coding",
+              "topic": "Low Level Design",
+              "subtopic": "Object-Oriented Design",
+              "difficulty": 4,
+              "answerApproach": "Use Strategy pattern for pricing, Factory for vehicle creation. Implement ParkingLot, Floor, Spot classes. Consider threading for concurrent access."
+            }
+          ]
+        },
+        {
+          "roundNumber": 3,
+          "roundType": "technical",
+          "roundName": "Problem Solving Round",
+          "description": "DSA-focused round with 2 problems.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Implement a rate limiter using Token Bucket algorithm.",
+              "questionType": "coding",
+              "topic": "System Design",
+              "subtopic": "Rate Limiting",
+              "difficulty": 3
+            },
+            {
+              "questionText": "Find the maximum sum subarray of size k.",
+              "questionType": "coding",
+              "topic": "Arrays",
+              "subtopic": "Sliding Window",
+              "difficulty": 2
+            }
+          ]
+        },
+        {
+          "roundNumber": 4,
+          "roundType": "hr",
+          "roundName": "HR Discussion",
+          "description": "Final HR round discussing expectations and fitment.",
+          "durationMinutes": 30,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "What are your salary expectations?",
+              "questionType": "hr",
+              "topic": "Negotiation",
+              "difficulty": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "Goldman Sachs",
+      "role": "Analyst - Technology",
+      "interviewYear": 2024,
+      "difficultyLevel": 4,
+      "offerStatus": "selected",
+      "overallExp": "positive",
+      "isAnonymous": true,
+      "tips": "1. HackerRank test is challenging - practice hard problems.\n2. They value knowledge of financial systems - read about trading platforms.\n3. Strong emphasis on data structures and complexity analysis.\n4. Coderpad round requires you to explain while coding.\n5. System design round focuses on low-latency systems.",
+      "resourcesUsed": ["HackerRank", "LeetCode", "Competitive Programming Handbook", "Educative.io"],
+      "rounds": [
+        {
+          "roundNumber": 1,
+          "roundType": "online_assessment",
+          "roundName": "HackerRank Test",
+          "description": "5 problems in 120 minutes. Mix of coding and SQL questions.",
+          "durationMinutes": 120,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Implement a function to evaluate a mathematical expression string (including parentheses).",
+              "questionType": "coding",
+              "topic": "Stacks",
+              "subtopic": "Expression Evaluation",
+              "difficulty": 4
+            },
+            {
+              "questionText": "SQL: Find the top 3 customers by transaction volume in each region.",
+              "questionType": "technical",
+              "topic": "SQL",
+              "subtopic": "Window Functions",
+              "difficulty": 3
+            }
+          ]
+        },
+        {
+          "roundNumber": 2,
+          "roundType": "technical",
+          "roundName": "Coderpad Interview",
+          "description": "Live coding session with 2 interviewers. Had to code and explain simultaneously.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Design and implement a thread-safe singleton with lazy initialization.",
+              "questionType": "coding",
+              "topic": "Design Patterns",
+              "subtopic": "Singleton",
+              "difficulty": 3
+            },
+            {
+              "questionText": "Find the longest increasing subsequence in an array.",
+              "questionType": "coding",
+              "topic": "Dynamic Programming",
+              "subtopic": "LIS",
+              "difficulty": 4,
+              "answerApproach": "Use DP with binary search for O(n log n). Maintain array of smallest ending elements for each length."
+            }
+          ]
+        },
+        {
+          "roundNumber": 3,
+          "roundType": "technical",
+          "roundName": "Technical Deep Dive",
+          "description": "Discussion on Java internals, multithreading, and system design.",
+          "durationMinutes": 60,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Explain how HashMap works internally in Java. What happens during a collision?",
+              "questionType": "technical",
+              "topic": "Java Internals",
+              "subtopic": "Collections",
+              "difficulty": 3
+            },
+            {
+              "questionText": "Design a real-time stock price aggregation system.",
+              "questionType": "system_design",
+              "topic": "System Design",
+              "subtopic": "Real-time Systems",
+              "difficulty": 5
+            }
+          ]
+        },
+        {
+          "roundNumber": 4,
+          "roundType": "behavioral",
+          "roundName": "Fit Interview",
+          "description": "Behavioral round with senior managers.",
+          "durationMinutes": 45,
+          "mode": "online",
+          "questions": [
+            {
+              "questionText": "Tell me about a project you're most proud of.",
+              "questionType": "behavioral",
+              "topic": "Projects",
+              "difficulty": 2
+            },
+            {
+              "questionText": "How do you handle working under pressure?",
+              "questionType": "behavioral",
+              "topic": "Work Ethic",
+              "difficulty": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sampleQueries": [
+    "What kind of questions does Google ask for SDE interviews?",
+    "How to prepare for Amazon's behavioral rounds?",
+    "What are common system design topics at Microsoft?",
+    "Tell me about Flipkart's machine coding round",
+    "What is the difficulty level of Goldman Sachs interviews?",
+    "What resources should I use for DSA preparation?",
+    "How important are leadership principles at Amazon?",
+    "What's the typical interview process at Google?",
+    "Give me tips for cracking MAANG interviews",
+    "What topics should I focus on for coding rounds?"
+  ]
+}

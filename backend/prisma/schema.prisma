@@ -1,0 +1,265 @@
+// Prisma Schema for The Placement Archive
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  junior
+  senior
+  admin
+}
+
+enum ExperienceStatus {
+  pending
+  approved
+  rejected
+  flagged
+}
+
+enum OfferStatus {
+  selected
+  rejected
+  pending
+  waitlist
+}
+
+enum OverallExperience {
+  positive
+  neutral
+  negative
+}
+
+enum RoundType {
+  online_assessment
+  technical
+  hr
+  managerial
+  system_design
+  behavioral
+  group_discussion
+  case_study
+}
+
+enum RoundMode {
+  online
+  offline
+  phone
+}
+
+enum QuestionType {
+  dsa
+  coding
+  system_design
+  behavioral
+  technical
+  hr
+  puzzle
+  case_study
+  project_based
+  theory
+}
+
+model User {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  passwordHash   String?   @map("password_hash")
+  name           String
+  college        String
+  graduationYear Int?      @map("graduation_year")
+  role           UserRole  @default(junior)
+  avatarUrl      String?   @map("avatar_url")
+  googleId       String?   @map("google_id")
+  isVerified     Boolean   @default(false) @map("is_verified")
+  isActive       Boolean   @default(true) @map("is_active")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  experiences      Experience[]
+  moderatedExps    Experience[]      @relation("ModeratedBy")
+  likes            ExperienceLike[]
+  bookmarks        Bookmark[]
+  queries          QueryHistory[]
+  spamReports      SpamReport[]
+  analyticsEvents  AnalyticsEvent[]
+
+  @@map("users")
+}
+
+model Company {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  logoUrl   String?  @map("logo_url")
+  industry  String?
+  tier      String?
+  avgCtc    Decimal? @map("avg_ctc") @db.Decimal(10, 2)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  experiences Experience[]
+
+  @@map("companies")
+}
+
+model Experience {
+  id              String            @id @default(uuid())
+  userId          String            @map("user_id")
+  companyId       String?           @map("company_id")
+  companyName     String            @map("company_name")
+  role            String
+  interviewYear   Int               @map("interview_year")
+  interviewMonth  Int?              @map("interview_month")
+  offerStatus     OfferStatus       @default(pending) @map("offer_status")
+  difficultyLevel Int?              @map("difficulty_level")
+  overallExp      OverallExperience? @map("overall_experience")
+  preparationTime String?           @map("preparation_time")
+  tips            String?
+  resourcesUsed   String[]          @map("resources_used")
+  pdfUrl          String?           @map("pdf_url")
+  viewsCount      Int               @default(0) @map("views_count")
+  likesCount      Int               @default(0) @map("likes_count")
+  isAnonymous     Boolean           @default(false) @map("is_anonymous")
+  status          ExperienceStatus  @default(pending)
+  moderationNotes String?           @map("moderation_notes")
+  moderatedBy     String?           @map("moderated_by")
+  moderatedAt     DateTime?         @map("moderated_at")
+  isEmbedded      Boolean           @default(false) @map("is_embedded")
+  embeddingId     String?           @map("embedding_id")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company         Company?          @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  moderator       User?             @relation("ModeratedBy", fields: [moderatedBy], references: [id])
+  rounds          InterviewRound[]
+  questions       Question[]
+  likes           ExperienceLike[]
+  bookmarks       Bookmark[]
+  spamReports     SpamReport[]
+  analyticsEvents AnalyticsEvent[]
+
+  @@index([companyName])
+  @@index([interviewYear])
+  @@index([status])
+  @@index([userId])
+  @@map("experiences")
+}
+
+model InterviewRound {
+  id              String    @id @default(uuid())
+  experienceId    String    @map("experience_id")
+  roundNumber     Int       @map("round_number")
+  roundType       RoundType @map("round_type")
+  roundName       String?   @map("round_name")
+  durationMinutes Int?      @map("duration_minutes")
+  mode            RoundMode?
+  description     String?
+  difficulty      Int?
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  questions  Question[]
+
+  @@index([experienceId])
+  @@map("interview_rounds")
+}
+
+model Question {
+  id               String       @id @default(uuid())
+  roundId          String?      @map("round_id")
+  experienceId     String       @map("experience_id")
+  questionText     String       @map("question_text")
+  questionType     QuestionType? @map("question_type")
+  topic            String?
+  subtopic         String?
+  difficulty       Int?
+  answerApproach   String?      @map("answer_approach")
+  timeGivenMinutes Int?         @map("time_given_minutes")
+  wasSolved        Boolean?     @map("was_solved")
+  tags             String[]
+  createdAt        DateTime     @default(now()) @map("created_at")
+
+  round      InterviewRound? @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  experience Experience      @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+
+  @@index([roundId])
+  @@index([questionType])
+  @@index([topic])
+  @@map("questions")
+}
+
+model ExperienceLike {
+  id           String   @id @default(uuid())
+  experienceId String   @map("experience_id")
+  userId       String   @map("user_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([experienceId, userId])
+  @@map("experience_likes")
+}
+
+model Bookmark {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  experienceId String   @map("experience_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, experienceId])
+  @@map("bookmarks")
+}
+
+model QueryHistory {
+  id             String   @id @default(uuid())
+  userId         String?  @map("user_id")
+  queryText      String   @map("query_text")
+  responseText   String?  @map("response_text")
+  sourcesUsed    String[] @map("sources_used")
+  responseTimeMs Int?     @map("response_time_ms")
+  wasHelpful     Boolean? @map("was_helpful")
+  feedback       String?
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@map("query_history")
+}
+
+model SpamReport {
+  id           String   @id @default(uuid())
+  experienceId String   @map("experience_id")
+  reportedBy   String?  @map("reported_by")
+  reason       String
+  description  String?
+  status       String   @default("pending")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  reporter   User?      @relation(fields: [reportedBy], references: [id], onDelete: SetNull)
+
+  @@map("spam_reports")
+}
+
+model AnalyticsEvent {
+  id           String   @id @default(uuid())
+  eventType    String   @map("event_type")
+  userId       String?  @map("user_id")
+  experienceId String?  @map("experience_id")
+  metadata     Json?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  experience Experience? @relation(fields: [experienceId], references: [id], onDelete: SetNull)
+
+  @@index([eventType])
+  @@map("analytics_events")
+}
